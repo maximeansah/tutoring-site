@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mr Richmond Tutoring</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+      text-align: center;
+    }
+
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 30px;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      margin: 10px auto;
+      padding: 15px;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    a.button {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 5px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Mr Richmond Tutoring</h1>
+  <p id="tagline"></p>
+</header>
+
+<section class="card">
+  <h2>Subjects Offered</h2>
+  <ul id="subjects"></ul>
+</section>
+
+<section class="card">
+  <h2>Pricing</h2>
+  <p>Weekly: <span id="weeklyPrice"></span></p>
+  <p>Monthly: <span id="monthlyPrice"></span></p>
+</section>
+
+<section class="card">
+  <h2>Contact Us</h2>
+  <a id="whatsappLink" class="button" target="_blank">
+    Chat on WhatsApp
+  </a>
+</section>
+
+<script src="config.js"></script>
+
+<script>
+  // tagline
+  document.getElementById("tagline").textContent = siteConfig.tagline;
+
+  // WhatsApp
+  document.getElementById("whatsappLink").href =
+    "https://wa.me/" + siteConfig.whatsapp;
+
+  // subjects
+  const list = document.getElementById("subjects");
+  siteConfig.subjects.forEach(sub => {
+    const li = document.createElement("li");
+    li.textContent = sub;
+    list.appendChild(li);
+  });
+
+  // pricing
+  document.getElementById("weeklyPrice").textContent = siteConfig.pricing.weekly;
+  document.getElementById("monthlyPrice").textContent = siteConfig.pricing.monthly;
+</script>
+
+</body>
+</html>
