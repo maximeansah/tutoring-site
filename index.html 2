@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mr Richmond Tutoring</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 30px 15px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      margin: 15px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 420px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      padding: 6px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .price {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .whatsapp-btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Mr Richmond Tutoring</h1>
+  <p id="tagline"></p>
+</header>
+
+<section class="card">
+  <h2>Subjects Offered</h2>
+  <ul id="subjects"></ul>
+</section>
+
+<section class="card">
+  <h2>Pricing</h2>
+  <div class="price">Weekly: <span id="weeklyPrice"></span></div>
+  <div class="price">Monthly: <span id="monthlyPrice"></span></div>
+</section>
+
+<section class="card">
+  <h2>Contact</h2>
+  <a id="whatsappLink" class="whatsapp-btn" target="_blank">
+    Chat on WhatsApp
+  </a>
+</section>
+
+<!-- CONNECT CONFIG FILE -->
+<script src="config.js"></script>
+
+<script>
+  // tagline
+  document.getElementById("tagline").textContent = siteConfig.tagline;
+
+  // WhatsApp link
+  document.getElementById("whatsappLink").href =
+    "https://wa.me/" + siteConfig.whatsapp;
+
+  // subjects
+  const subjectsList = document.getElementById("subjects");
+
+  siteConfig.subjects.forEach(subject => {
+    const li = document.createElement("li");
+    li.textContent = subject;
+    subjectsList.appendChild(li);
+  });
+
+  // pricing
+  document.getElementById("weeklyPrice").textContent = siteConfig.pricing.weekly;
+  document.getElementById("monthlyPrice").textContent = siteConfig.pricing.monthly;
+</script>
+
+</body>
+</html>
